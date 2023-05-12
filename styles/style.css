@@ -1,0 +1,185 @@
+/* @font-face {
+  font-family: "good timing bd";
+  src: url("./fonts//good-timing-bd.otf") format("opentype");
+} */
+
+@font-face {
+  font-family: "Crackman";
+  src: url("./fonts//Crackman.otf") format("opentype");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eceadd;
+  font-family: "good timing bd", cursive;
+  color: #77694b;
+  background-size: 20%;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  font-family: "Crackman", fantasy;
+  font-weight: bold;
+  font-size: 5rem;
+  color: #725256;
+}
+h3 {
+  font-family: "Crackman", fantasy;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 10px 0px;
+}
+p {
+  font-weight: 600;
+}
+.red {
+  color: #ed2d2d;
+}
+.colors {
+  color: #7ba53c;
+  color: #eceadd;
+  color: #ff975a;
+  color: #efedec;
+  color: #77694b;
+}
+.container {
+  max-width: 1200px;
+  margin: 5rem auto;
+  background-color: #faf8f4;
+  text-align: center;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.side {
+  flex: 1;
+}
+.alphabet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 1rem 0rem;
+}
+.lines{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eceadd;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #8888884b;
+  color: #77694b;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+.button {
+  height: 40px;
+  width: 50px;
+}
+button:hover {
+  background-color: #7ba53c;
+  color: #efedec;
+  cursor: pointer;
+}
+button:active {
+  background-color: #ff975a;
+  transform: translateY(2px);
+  box-shadow: none;
+}
+button:disabled {
+  background-color: #ff975a;
+  transform: translateY(2px);
+  box-shadow: none;
+  outline: none;
+}
+
+.counter{
+  margin: 20px 0px;
+  font-weight: bold;
+  color: #ed2d2d;
+}
+
+.dead-message {
+  color: #ff975a !important;
+}
+.win-message {
+  color: #7ba53c !important;
+}
+.play-again-btn {
+  font-family: "Crackman", fantasy;
+  border: none;
+  background-color: transparent;
+  width: 180px;
+  padding: 10px 20px;
+  background-color: #7ba53c;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* MAN DRAWING */
+.square {
+  width: 500px;
+  height: 400px;
+  border: 5px solid black;
+  border-bottom: none; 
+  border-top: none; 
+  border-right: none; 
+  position: relative; 
+}
+
+/* .square::before { 
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 20%;
+  bottom: 0;
+  left: 50%;
+  border-left: 2px solid black;
+} */
+.hangman {
+  position: relative;
+  height: 400px;
+
+}
+.hangman img{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px; 
+}
+
+
+
+@media only screen and (min-width: 900px) {
+.cont {
+  flex-direction: row;
+}
+.container{
+  padding: 30px 20px;
+}
+}
