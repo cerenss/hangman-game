@@ -5,9 +5,96 @@ const deadMessage = document.getElementById("dead-message");
 const winMessage = document.getElementById("win-message");
 const linesContainer = document.getElementById("lines");
 const counterr = document.getElementById("counter");
-const square = document.getElementById("square");
-const myImage = document.getElementById("hangman-img");
 const playAgain = document.getElementById("play-again-btn");
+const canvas = document.querySelector("canvas");
+const c = canvas.getContext("2d");
+console.log(canvas);
+// Set line properties
+c.strokeStyle = "black";
+c.lineWidth = 2;
+
+function lifes9() {
+  // Draw a straight line on left 9 life
+  c.beginPath();
+  c.moveTo(3, 2);
+  c.lineTo(3, 150);
+  c.stroke();
+}
+function lifes8() {
+  // Draw a straight line on top 8
+  c.beginPath();
+  c.moveTo(3, 3);
+  c.lineTo(150, 3);
+  c.stroke();
+}
+function lifes7() {
+  //box square  7
+  c.beginPath();
+  c.moveTo(120, 125);
+  c.lineTo(180, 125);
+  c.lineTo(170, 180);
+  c.lineTo(130, 180);
+  c.lineTo(120, 125);
+  c.stroke();
+}
+function lifes6() {
+  // Draw Circle for head  6
+  const centerX = 150;
+  const centerY = 40;
+  const radius = 10;
+  c.beginPath();
+  c.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+  c.stroke();
+}
+function lifes5() {
+  // 5 body line
+  c.beginPath();
+  c.moveTo(150, 110);
+  c.lineTo(150, 50);
+  c.stroke();
+}
+function lifes4() {
+  //hands
+  //4
+  c.beginPath();
+  c.moveTo(150, 50);
+  c.lineTo(180, 60);
+  c.stroke();
+}
+function lifes3() {
+  //hands
+
+  //3
+  c.beginPath();
+  c.moveTo(150, 50);
+  c.lineTo(120, 60);
+  c.stroke();
+}
+function lifes2() {
+  //legs
+  // 2
+  c.beginPath();
+  c.moveTo(150, 110);
+  c.lineTo(180, 120);
+  c.stroke();
+  function lifes1() {}
+  //legs
+}
+function lifes1() {
+  // 1
+  c.beginPath();
+  c.moveTo(150, 110);
+  c.lineTo(120, 120);
+  c.stroke();
+}
+function lifes0() {
+  //hanged 0
+  c.beginPath();
+  c.moveTo(150, 3);
+  c.lineTo(150, 30);
+  c.stroke();
+}
+
 deadMessage.style.display = "none";
 winMessage.style.display = "none";
 
@@ -80,60 +167,37 @@ async function fetchData() {
       counterr.textContent = `You have ${counter} lifes left`;
 
       if (counter == 9) {
-        square.classList.add("square");
+        lifes9();
       } else if (counter == 8) {
-        square.classList.add("square");
-        square.style.borderTop = "2px solid black";
+        lifes8();
       } else if (counter == 7) {
-        square.classList.add("square");
-        square.style.borderTop = "2px solid black";
-        square.style.borderRight = "2px solid black";
+        lifes7();
       } else if (counter == 6) {
-        square.classList.add("square");
-        square.style.borderTop = "2px solid black";
-        square.style.borderRight = "2px solid black";
-        myImage.src = "./images/6.png";
+        lifes6();
       } else if (counter == 5) {
-        square.classList.add("square");
-        square.style.borderTop = "2px solid black";
-        square.style.borderRight = "2px solid black";
-        myImage.src = "./images/5.png";
+        lifes5();
       } else if (counter == 4) {
-        square.classList.add("square");
-        square.style.borderTop = "2px solid black";
-        square.style.borderRight = "2px solid black";
-        myImage.src = "./images/4.png";
+        lifes4();
       } else if (counter == 3) {
-        square.classList.add("square");
-        square.style.borderTop = "2px solid black";
-        square.style.borderRight = "2px solid black";
-        myImage.src = "./images/3.png";
+        lifes3();
       } else if (counter == 2) {
-        square.classList.add("square");
-        square.style.borderTop = "2px solid black";
-        square.style.borderRight = "2px solid black";
-        myImage.src = "./images/2.png";
+        lifes2();
       } else if (counter == 1) {
-        square.classList.add("square");
-        square.style.borderTop = "2px solid black";
-        square.style.borderRight = "2px solid black";
-        myImage.src = "./images/1.png";
-      } else if (counter == 0) {
-        square.classList.add("square");
-        square.style.borderTop = "2px solid black";
-        square.style.borderRight = "2px solid black";
-        myImage.src = "./images/0.png";
-      } else if (counter < 0) {
+        lifes1();
+      } else if (counter == 0 || counter < 0) {
         counterr.textContent = `You have 0 lifes left`;
-        square.classList.add("square");
-        square.style.borderTop = "2px solid black";
-        square.style.borderRight = "2px solid black";
-        myImage.src = "./images/0.png";
-      } else {
-        square.classList = [];
-        myImage.src = "";
-        myImage.src = "./images/start.png";
-
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        lifes9()
+        lifes8()
+       
+        lifes6()
+        lifes5()
+        lifes4()
+        lifes3()
+        lifes2()
+        lifes1()
+        lifes0()
+        deadMessage.style.display = "block";
       }
       if (counter == 0 && correctLines != lines.length) {
         deadMessage.style.display = "block";
