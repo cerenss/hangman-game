@@ -187,25 +187,31 @@ async function fetchData() {
       } else if (counter == 0 || counter < 0) {
         counterr.textContent = `You have 0 lifes left`;
         c.clearRect(0, 0, canvas.width, canvas.height);
-        lifes9()
-        lifes8()
-       
-        lifes6()
-        lifes5()
-        lifes4()
-        lifes3()
-        lifes2()
-        lifes1()
-        lifes0()
+        lifes9();
+        lifes8();
+        lifes6();
+        lifes5();
+        lifes4();
+        lifes3();
+        lifes2();
+        lifes1();
+        lifes0();
         deadMessage.style.display = "block";
+        for (let i = 0; i < letterButtons.length; i++) {
+          letterButtons[i].disabled = true;
+        }
+      } else {
+        winMessage.style.display = "block";
       }
       if (counter == 0 && correctLines != lines.length) {
         deadMessage.style.display = "block";
         console.log("here");
-      } else if (counter == 10 && correctLines == lines.length) {
+        for (let i = 0; i < letterButtons.length; i++) {
+          letterButtons[i].disabled = true;
+        }
+      } else if (counter > 10 && correctLines == lines.length) {
         winMessage.style.display = "block";
         counterr.style.display = "none";
-        myImage.src = "./images/win.png";
       }
     });
   }
